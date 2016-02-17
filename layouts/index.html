@@ -1,25 +1,28 @@
 {{ partial "header.html" .}}
 
-    <!-- Page Header -->
-    <header class="intro-header" style="background-image: url('{{ .Site.BaseURL }}/img/home-bg.jpg')">
-     <div class="container">
-       <div class="row">
-         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-           <div class="site-heading">
-             <h1>{{ .Site.Title }}</h1>
-             <hr class="small">
-             {{ if isset .Site.Params "Description" }}<span class="subheading">{{ .Site.Params.Description }}</span>{{ end }}
-           </div>
-         </div>
-       </div>
-     </div>
-    </header>
+    {{ range first 1 (where .Data.Pages "Type" "post") }}
+        <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('{{ .Site.BaseURL }}/img/home-bg.jpg')">
+        {{ partial "post-header.html" .}}
+        </header>
+        {{ partial "post-content.html" .}}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <a href="{{ .Permalink }}">#</a>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+    {{ end }}
 
     <!-- Main Content -->
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-          {{ range first 4 (where .Data.Pages "Type" "post") }}
+          {{ range after 1 (first 10 (where .Data.Pages "Type" "post")) }}
               {{ .Render "summary"}}
           {{ end }}
           <!-- Pager -->
