@@ -8,11 +8,6 @@
                {{ end }}
 
                <span class="meta"> Posted on {{ dateFormat .Site.Params.DateForm .Date }}
-                 {{ if isset .Params "categories" }}
-                    <br />
-                    {{ partial "categories.html" . }}
-                 {{ end }}
-
                  {{ if isset .Params "tags" }}
                     <br />
                     {{ partial "tags.html" . }}
