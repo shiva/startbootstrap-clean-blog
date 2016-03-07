@@ -1,10 +1,9 @@
-               
-asdsds
+
 <div class="post-preview">
-                  <p class="post-meta"><a href="{{ .Permalink }}">{{ .Title }}</a> on {{ dateFormat .Site.Params.DateForm .Date }}
-                    {{ if isset .Params "tags" }}
-                        <br />
-                        {{ partial "tags.html" .}}
-                    {{ end }}
-                  </p>
-               </div>
+    <p class="post-meta"><a href="{{ .Permalink }}">{{ .Title }}</a> on {{ dateFormat .Site.Params.DateForm .Date }}
+        {{ if isset .Params "tags" }}
+        <br />
+        {{ partial "tags.html" .}}
+        {{ end }}
+    </p>
+</div>
